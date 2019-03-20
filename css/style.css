@@ -1,0 +1,7 @@
+.result { text-align: center; text-transform: uppercase; }
+
+.buttons_panel { display: -ms-flexbox; display: flex; -ms-flex-pack: center; justify-content: center; }
+
+.btn { font-size: 20px; text-transform: uppercase; height: 40px; width: 150px; }
+
+.output { text-align: center; }

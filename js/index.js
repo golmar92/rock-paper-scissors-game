@@ -8,39 +8,54 @@ var compScore = 0;
 var totalRounds = 3;
 result.innerHTML = "RESULT" + "<br>" + playerScore + "-" + compScore + "<br>" + "ROUNDS TO WIN: " + totalRounds;
 
-
-var paper = document.getElementById('paper');
-var rock = document.getElementById('rock');
-var scissors = document.getElementById('scissors');
 var start = document.getElementById('start');
 
-paper.addEventListener('click', function(){
-	if (checkRoundsScore() == 1) {
-		event.preventDefault();
-		output.innerHTML += "<br>Game over, please press the new game button.";
-	}
-	else {
-		playerMove('paper');
-	}
-});
-rock.addEventListener('click', function(){
-	if (checkRoundsScore() == 1) {
-		event.preventDefault();
-		output.innerHTML += "<br>Game over, please press the new game button.";
-	}
-	else {
-		playerMove('rock');
-	}
-});
-scissors.addEventListener('click', function(){
-	if (checkRoundsScore() == 1) {
-		event.preventDefault();
-		output.innerHTML += "<br>Game over, please press the new game button.";
-	}
-	else {
-		playerMove('scissors');
-	}
-});
+var params = {playerScore:0, compScore:0, totalRound:3};
+
+// paper.addEventListener('click', function(){
+// 	if (checkRoundsScore() == 1) {
+// 		event.preventDefault();
+// 		output.innerHTML += "<br>Game over, please press the new game button.";
+// 	}
+// 	else {
+// 		playerMove('paper');
+// 	}
+// });
+// rock.addEventListener('click', function(){
+// 	if (checkRoundsScore() == 1) {
+// 		event.preventDefault();
+// 		output.innerHTML += "<br>Game over, please press the new game button.";
+// 	}
+// 	else {
+// 		playerMove('rock');
+// 	}
+// });
+// scissors.addEventListener('click', function(){
+// 	if (checkRoundsScore() == 1) {
+// 		event.preventDefault();
+// 		output.innerHTML += "<br>Game over, please press the new game button.";
+// 	}
+// 	else {
+// 		playerMove('scissors');
+// 	}
+// });
+
+var move = document.querySelectorAll('.player-move');
+
+for (var i = 0; i < move.length; i++) {
+
+	move[i].addEventListener('click', function(event) {
+
+		var dataMove = event.target.getAttribute('data-move');
+
+		if (checkRoundsScore() == 1) {			
+			output.innerHTML += "<br>Game over, please press the new game button.";
+		}
+		else {
+			playerMove(dataMove);
+		}
+	});
+}
 
 start.addEventListener('click', function(){
 	reset();
